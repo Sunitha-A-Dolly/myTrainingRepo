@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 echo "hello"
 yum install nginx -y
 systemctl enable nginx
@@ -12,4 +13,4 @@ mv frontend-main/* .
 mv static/* .
 rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
-sudo yum restart nginx
+systemctl restart nginx
