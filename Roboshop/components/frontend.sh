@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./common.sh
+source common.sh
 
 set -e
 echo "hello I'm front end"
@@ -9,6 +9,10 @@ if[$userid -ne 0];then
     echo "You need to be a root user"
     exit 1
 fi
+
+ yum install nginx -y
+    systemctl enable nginx
+    systemctl start nginx
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 cd /usr/share/nginx/html
