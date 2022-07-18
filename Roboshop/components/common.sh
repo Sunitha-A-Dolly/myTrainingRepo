@@ -14,7 +14,7 @@ fi
 }
 
 checkStatus(){
-    if [ $1 -eq 0] ; then
+    if [ $1 -eq 0 ] ; then
         echo "Success"
     else
         echo "Failure"
