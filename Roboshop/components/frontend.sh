@@ -4,8 +4,8 @@ source components/common.sh
 set -e
 echo "hello I'm front end"
 
-userid = $(id -u)
-if [$userid -ne 0] ;then
+USER_ID = $(id -u)
+if [ $USER_ID -ne 0 ] ; then
     echo "You need to be a root user"
     exit 1
 fi
