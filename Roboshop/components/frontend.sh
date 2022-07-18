@@ -1,5 +1,5 @@
 #!/bin/bash
-source common.sh
+source components/common.sh
 
 set -e
 echo "hello I'm front end"
