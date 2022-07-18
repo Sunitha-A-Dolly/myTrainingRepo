@@ -12,3 +12,11 @@ if [ $USER_ID -ne 0 ] ; then
     exit 1
 fi
 }
+
+checkStatus(){
+    if [ $1 eq 0] ; them
+        echo "Success"
+    else
+        echo "Failure"
+    fi
+}
