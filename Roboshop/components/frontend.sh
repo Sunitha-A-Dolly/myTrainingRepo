@@ -7,7 +7,7 @@ sw=nginx
 set -e
 echo "hello I'm front end"
 
-echo -n "Check for root user"
+echo -n "Check for root user "
 checkUser
 stat $?
 

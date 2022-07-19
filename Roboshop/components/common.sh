@@ -6,7 +6,6 @@ installSoftware(){
 
 checkUser(){
     USER_ID=$(id -u)
-echo $USER_ID
 if [ $USER_ID -ne 0 ] ; then
     echo "You need to be a root user"
     exit 1
