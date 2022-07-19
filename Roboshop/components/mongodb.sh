@@ -1,7 +1,7 @@
 #!/bin/bash
 source components/common.sh
 COMPONENT=mongod
-LOGFILE="/tmp/$COMPONENTS.log"
+LOGFILE="/tmp/$COMPONENT.log"
 MongodRepo="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
 MongodSchemaRepo="https://github.com/stans-robot-project/mongodb/archive/main.zip"
 sw=nginx

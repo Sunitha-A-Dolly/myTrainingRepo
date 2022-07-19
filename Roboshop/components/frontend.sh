@@ -1,7 +1,7 @@
 #!/bin/bash
 source components/common.sh
-COMPONENTS=frontend
-LOGFILE="/tmp/$COMPONENTS.log"
+COMPONENT=frontend
+LOGFILE="/tmp/$COMPONENT.log"
 frontendRepo="https://github.com/stans-robot-project/frontend/archive/main.zip"
 sw=nginx
 

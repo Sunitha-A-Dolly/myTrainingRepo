@@ -1,7 +1,7 @@
 #!/bin/bash
 source components/common.sh
-COMPONENTS=mysqld
-LOGFILE="/tmp/$COMPONENTS.log"
+COMPONENT=mysqldb
+LOGFILE="/tmp/$COMPONENT.log"
 mysqlRepo="https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo"
 sw=nginx
 
