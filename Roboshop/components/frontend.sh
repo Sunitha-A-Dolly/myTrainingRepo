@@ -24,7 +24,7 @@ rm -rf *
 stat $?
 
 echo -n "Extracting content"
-unzip /tmp/frontend.zip
+unzip /tmp/frontend.zip &>> $LOGFILE
 stat $?
 
 echo -n "Update Proxy file"
