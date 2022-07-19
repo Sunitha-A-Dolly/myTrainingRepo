@@ -2,6 +2,7 @@
 source components/common.sh
 COMPONENTS=frontend
 LOGFILE="/tmp/$COMPONENTS.log"
+sw=nginx
 
 set -e
 echo "hello I'm front end"
@@ -9,7 +10,7 @@ echo "hello I'm front end"
 checkUser
 stat $?
 
-installSoftware
+installSoftware nginx
 stat $?
 
 echo -n "Downloading content"
