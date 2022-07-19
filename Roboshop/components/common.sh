@@ -1,7 +1,7 @@
 installSoftware(){
-    yum install $1 -y
-    systemctl enable $1
-    systemctl start $1
+    yum install $1 -y &>> $LOGFILE
+    systemctl enable $1 &>> $LOGFILE
+    systemctl start $1 &>> $LOGFILE
 }
 
 checkUser(){
@@ -13,7 +13,7 @@ if [ $USER_ID -ne 0 ] ; then
 fi
 }
 
-checkStatus(){
+stat(){
     if [ $1 -eq 0 ] ; then
         echo "Success"
     else
