@@ -5,7 +5,7 @@ LOGFILE="/tmp/$COMPONENTS.log"
 sw=nginx
 
 set -e
-echo "\e[32m hello I'm front end \e[0m"
+echo -e "\e[32m hello I'm front end \e[0m"
 
 echo -n "Check for root user "
 checkUser
