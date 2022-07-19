@@ -24,11 +24,15 @@ echo -n "Switch to roboshop user and run "
 id roboshop &>> $LOGFILE || useradd roboshop
 stat $?
 
+echo -n "Perform cleanup"
+cd /home/roboshop && rm -rf ${COMPONENT} &>> $LOGFILE
+stat $?
+
 echo -n "Downloading $COMPONENT repo "
 curl -s -L -o /tmp/${COMPONENT}.zip "$CatalogueRepo" &>> $LOGFILE
 stat $?
 
-echo -n "Extract catalogue"
+echo -n "Extract $COMPONENT"
 cd /home/roboshop
 unzip /tmp/${COMPONENT}.zip &>> $LOGFILE
 stat $?
