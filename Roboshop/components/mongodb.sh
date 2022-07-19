@@ -1,5 +1,5 @@
 #!/bin/bash
-source . ./common.sh
+source common.sh
 COMPONENT=mongod
 LOGFILE="/tmp/$COMPONENTS.log"
 MongodRepo="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
