@@ -13,8 +13,8 @@ checkUser
 stat $?
 
 
-echo -n "Extract sw"
-curl -s -o /etc/yum.repos.d/mongodb.repo MongodRepo &>> $LOGFILE
+echo -n "Extract sw "
+curl -s -o /etc/yum.repos.d/mongodb.repo MongodRepo
 stat $?
 
 echo -n "Install software"
