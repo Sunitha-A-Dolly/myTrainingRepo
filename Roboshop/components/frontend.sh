@@ -2,6 +2,7 @@
 source components/common.sh
 COMPONENTS=frontend
 LOGFILE="/tmp/$COMPONENTS.log"
+frontendRepo="https://github.com/stans-robot-project/frontend/archive/main.zip"
 sw=nginx
 
 set -e
@@ -16,7 +17,7 @@ installSoftware nginx
 stat $?
 
 echo -n "Downloading content"
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
+curl -s -L -o /tmp/frontend.zip $frontendRepo
 stat $?
 
 echo -n "Removing old content"
