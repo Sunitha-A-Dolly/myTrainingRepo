@@ -11,6 +11,7 @@ echo -n "Check for root user"
 checkUser
 stat $?
 
+echo -n "Install software"
 installSoftware nginx
 stat $?
 
