@@ -13,7 +13,7 @@ checkUser
 stat $?
 
 echo -n "Configuring nodeJS"
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>> $LOGFILE
 stat $?
 
 echo -n "Installing nodeJS"
