@@ -14,7 +14,7 @@ stat $?
 
 
 echo -n "Extract sw "
-curl -s -o /etc/yum.repos.d/mongodb.repo MongodRepo
+curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
 stat $?
 
 echo -n "Install software"
