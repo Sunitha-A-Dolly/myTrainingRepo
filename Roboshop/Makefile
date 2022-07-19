@@ -6,4 +6,7 @@ mongod :
 	sh components/mongodb.sh
 mysql :
 	sh components/mysql.sh
+catalogue :
+	sh components/catalogue.sh
+
 
