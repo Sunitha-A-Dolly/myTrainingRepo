@@ -3,7 +3,7 @@ source components/common.sh
 COMPONENT=catalogue
 LOGFILE="/tmp/$COMPONENT.log"
 CatalogueRepo="https://github.com/stans-robot-project/catalogue/archive/main.zip"
-
+APPUSER="roboshop"
 
 set -e
 echo -e "\e[32m hello I'm Catalogue \e[0m"
@@ -37,8 +37,8 @@ cd /home/roboshop
 unzip /tmp/${COMPONENT}.zip &>> $LOGFILE
 stat $?
 
-echo "Install npm web server"
-mv ${COMPONENT}-main ${COMPONENT}
-cd /home/roboshop/${COMPONENT}
+echo "Change ownership and Install npm web server"
+mv ${COMPONENT}-main ${COMPONENT} && chown -R $APPUSER:$APPUSER ${COMPONENT}
+cd /${COMPONENT}
 npm install &>> $LOGFILE
 stat $?
