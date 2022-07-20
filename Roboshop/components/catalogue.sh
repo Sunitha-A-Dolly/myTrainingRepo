@@ -33,7 +33,7 @@ curl -s -L -o /tmp/${COMPONENT}.zip "$CatalogueRepo" &>> $LOGFILE
 stat $?
 
 echo -n "Extract $COMPONENT"
-cd /home/roboshop
+cd /home/roboshop/
 unzip /tmp/${COMPONENT}.zip &>> $LOGFILE
 stat $?
 
