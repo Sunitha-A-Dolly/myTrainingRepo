@@ -32,3 +32,13 @@ echo -n "Downloading $COMPONENT repo "
 curl -s -L -o /tmp/${COMPONENT}.zip "$CatalogueRepo" &>> $LOGFILE
 stat $?
 
+echo -n "Extract $COMPONENT"
+cd /home/roboshop/
+unzip -o /tmp/${COMPONENT}.zip
+stat $?
+
+echo "Change ownership and Install npm web server"
+mv ${COMPONENT}-main ${COMPONENT} && chown -R $APPUSER:$APPUSER ${COMPONENT}
+cd /${COMPONENT}
+npm install &>> $LOGFILE
+stat $?
