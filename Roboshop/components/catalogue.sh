@@ -34,7 +34,7 @@ stat $?
 
 echo -n "Extract $COMPONENT"
 cd /home/roboshop/
-unzip -o /tmp/${COMPONENT}.zip
+unzip -o /tmp/${COMPONENT}.zip &>> $LOGFILE
 stat $?
 
 echo "Change ownership and Install npm web server"
