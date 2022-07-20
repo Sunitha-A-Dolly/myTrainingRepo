@@ -39,6 +39,6 @@ stat $?
 
 echo "Change ownership and Install npm web server"
 mv ${COMPONENT}-main ${COMPONENT} && chown -R $APPUSER:$APPUSER ${COMPONENT}
-cd /${COMPONENT}
+cd ${COMPONENT}
 npm install &>> $LOGFILE
 stat $?
