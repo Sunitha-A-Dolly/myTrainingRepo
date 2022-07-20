@@ -25,7 +25,7 @@ id roboshop &>> $LOGFILE || useradd roboshop
 stat $?
 
 echo -n "Perform cleanup"
-cd /home/roboshop/ && rm -rf ${COMPONENT} &>> $LOGFILE
+cd /home/roboshop/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
 stat $?
 
 echo -n "Downloading $COMPONENT repo "
