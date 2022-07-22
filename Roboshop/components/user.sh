@@ -29,7 +29,7 @@ cd /home/$APPUSER/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
 stat $?
 
 echo -n "Download User project"
-curl -s -L -o /tmp/${COMPONENT}.zip userProjRepo &>> $LOGFILE
+curl -s -L -o /tmp/${COMPONENT}.zip ${userProjRepo} &>> $LOGFILE
 stat $?
 
 echo -n "Unzip ${COMPONENT} project"
