@@ -43,14 +43,3 @@ cd /home/$APPUSER/${COMPONENT}
 npm install &>> $LOGFILE
 stat $?
 
-echo -n "Update Redis and Mongodb Endpoint"
-echo -n  "/home/$APPUSER/${COMPONENT}/systemd.service"
-sed -i -e 's/REDIS_ENDPOINT/172.31.15.228/g' /home/$APPUSER/${COMPONENT}/systemd.service  -e 's/MONGO_ENDPOINT/172.31.15.221/g' /home/$APPUSER/${COMPONENT}/systemd.service
-stat $?
-
-echo -n "Enable system service"
-mv /home/$APPUSER/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>> $LOGFILE
-systemctl daemon-reload
-systemctl start ${COMPONENT}
-systemctl enable ${COMPONENT} &>> $LOGFILE
-stat $?
