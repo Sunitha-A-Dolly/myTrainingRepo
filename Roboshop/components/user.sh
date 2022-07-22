@@ -24,9 +24,6 @@ echo -n "Switch to roboshop ${COMPONENT} and run "
 id $APPUSER &>> $LOGFILE || useradd $APPUSER
 stat $?
 
-echo -n "Perform cleanup"
-cd /home/$APPUSER/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
-stat $?
 
 echo -n "Download User project"
 curl -s -L -o /tmp/${COMPONENT}.zip ${userProjRepo} &>> $LOGFILE
@@ -44,6 +41,7 @@ npm install &>> $LOGFILE
 stat $?
 
 echo -n "Update Redis and Mongodb Endpoint"
+echo -n  "/home/$APPUSER/${COMPONENT}/systemd.service"
 sed -i -e 's/REDIS_ENDPOINT/172.31.15.228/g' /home/$APPUSER/${COMPONENT}/systemd.service  -e 's/MONGO_ENDPOINT/172.31.15.221/g' /home/$APPUSER/${COMPONENT}/systemd.service
 stat $?
 
