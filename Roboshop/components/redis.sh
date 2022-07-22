@@ -24,5 +24,5 @@ stat $?
 
 echo -n "Start ${COMPONENT}"
 systemctl enable ${COMPONENT} &>> $LOGFILE
-systemctl start ${COMPONENT} 
-systemctl status ${COMPONENT} -l
+systemctl start ${COMPONENT}  &>> $LOGFILE
+systemctl status ${COMPONENT} -l &>> $LOGFILE
