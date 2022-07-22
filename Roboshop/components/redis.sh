@@ -23,6 +23,6 @@ sed -i  's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
 stat $?
 
 echo -n "Start ${COMPONENT}"
-systemctl enable redis
-systemctl start redis
-systemctl status redis -l
+systemctl enable ${COMPONENT}
+systemctl start ${COMPONENT}
+systemctl status ${COMPONENT} -l
