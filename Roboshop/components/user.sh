@@ -37,6 +37,6 @@ stat $?
 
 echo -n "Unzip ${COMPONENT} project"
 cd /home/$APPUSER
-unzip /tmp/${COMPONENT}.zip &>> $LOGFILE
+unzip -o /tmp/${COMPONENT}.zip &>> $LOGFILE
 stat $?
 
