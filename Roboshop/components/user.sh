@@ -48,8 +48,8 @@ sed -i -e 's/REDIS_ENDPOINT/172.31.15.228/g' /home/$APPUSER/${COMPONENT}/systemd
 stat $?
 
 echo -n "Enable system service"
-mv /home/$APPUSER/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+mv /home/$APPUSER/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>> $LOGFILE
 systemctl daemon-reload
 systemctl start ${COMPONENT}
-systemctl enable ${COMPONENT}
+systemctl enable ${COMPONENT} &>> $LOGFILE
 stat $?
