@@ -26,7 +26,7 @@ stat $?
 
 echo -n "Perform cleanup"
 cd /home/$APPUSER/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
-cd /tmp/ && sudo rm -rf ${COMPONENT} 
+cd /tmp/ && sudo rm -rf * 
 stat $?
 
 echo -n "Download User project"
