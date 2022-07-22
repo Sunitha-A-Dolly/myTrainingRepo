@@ -20,13 +20,15 @@ curl -sL $nodejsRepo | bash &>> $LOGFILE
 yum install $nodeJSApplication -y &>> $LOGFILE
 stat $?
 
-echo -n "Switch to roboshop ${COMPONENT} and run "
-id $APPUSER &>> $LOGFILE || useradd $APPUSER
-stat $?
+
 
 echo -n "Perform cleanup"
 cd /home/$APPUSER/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
 cd /tmp/ && sudo rm -rf * 
+stat $?
+
+echo -n "Switch to roboshop ${COMPONENT} and run "
+id $APPUSER &>> $LOGFILE || useradd $APPUSER
 stat $?
 
 echo -n "Download User project"
