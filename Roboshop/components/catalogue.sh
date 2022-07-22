@@ -21,11 +21,11 @@ yum install nodejs -y &>> $LOGFILE
 stat $?
 
 echo -n "Switch to roboshop user and run "
-id roboshop &>> $LOGFILE || useradd roboshop
+id $APPUSER &>> $LOGFILE || useradd $APPUSER
 stat $?
 
 echo -n "Perform cleanup"
-cd /home/roboshop/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
+cd /home/$APPUSER/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
 stat $?
 
 echo -n "Downloading $COMPONENT repo "

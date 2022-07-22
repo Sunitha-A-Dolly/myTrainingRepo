@@ -6,7 +6,7 @@ RedisRepo="https://raw.githubusercontent.com/stans-robot-project/redis/main/redi
 APPUSER="roboshop"
 
 set -e
-echo -e "\e[32m hello I'm Catalogue \e[0m"
+echo -e "\e[32m hello I'm Redis \e[0m"
 
 echo -n "Check for root user "
 checkUser
