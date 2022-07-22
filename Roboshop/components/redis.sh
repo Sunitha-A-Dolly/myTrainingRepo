@@ -22,7 +22,8 @@ echo -n "Configuring ${COMPONENT}"
 sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/${COMPONENT}/${COMPONENT}.conf  -e 's/127.0.0.1/0.0.0.0/g' /etc/${COMPONENT}.conf &>> $LOGFILE
 stat $?
 
-echo -n "Start ${COMPONENT}"
+echo -n "Start service ${COMPONENT}"
 systemctl enable ${COMPONENT} &>> $LOGFILE
 systemctl start ${COMPONENT}  &>> $LOGFILE
 systemctl status ${COMPONENT} -l &>> $LOGFILE
+stat $?
