@@ -44,7 +44,6 @@ npm install &>> $LOGFILE
 stat $?
 
 echo -n "Update Redis and Mongodb Endpoint"
-vim /home/$APPUSER/${COMPONENT}/systemd.service
 sed -i -e 's/REDIS_ENDPOINT/172.31.15.228/g' /home/$APPUSER/${COMPONENT}/systemd.service  -e 's/MONGO_ENDPOINT/172.31.15.221/g' /home/$APPUSER/${COMPONENT}/systemd.service
 stat $?
 
