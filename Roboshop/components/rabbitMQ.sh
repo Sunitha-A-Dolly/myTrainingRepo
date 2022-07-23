@@ -12,22 +12,22 @@ echo -n "Check for root user "
 checkUser
 stat $?
 
-echo -n "Erlang is a dependency that is needed for RabbitMQ"
-yum install $mqDependancyProjRepo -y
+echo -n "Erlang is a dependency that is needed for ${COMPONENT} "
+yum install $mqDependancyProjRepo -y &>> $LOGFILE
 stat $?
 
-echo -n "Download and install "
-curl -s $mqPackage | sudo bash
-yum install ${COMPONENT} -y
+echo -n "Download and install ${COMPONENT} "
+curl -s $mqPackage | sudo bash &>> $LOGFILE
+yum install ${COMPONENT} -y &>> $LOGFILE
 stat $?
 
-echo -n "Enable "
+echo -n "Start ${COMPONENT}  "
 systemctl enable ${COMPONENT} 
 systemctl start ${COMPONENT}
 systemctl status ${COMPONENT} -l
 stat $?
 
-echo -n "Add and set user tags for "
+echo -n "Add and set user tags for ${COMPONENT} "
 rabbitmqctl add_user $APPUSER roboshop123
 rabbitmqctl set_user_tags $APPUSER administrator
 rabbitmqctl set_permissions -p / $APPUSER ".*" ".*" ".*"
