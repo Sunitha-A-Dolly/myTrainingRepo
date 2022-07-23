@@ -13,7 +13,7 @@ checkUser
 stat $?
 
 echo -n "Install maven"
-yum install maven -y
+yum install maven -y &>> $LOGFILE
 stat $?
 
 echo -n "Switch to roboshop ${COMPONENT} "
@@ -26,24 +26,24 @@ stat $?
 
 echo -n "Download ${COMPONENT} project"
 cd /home/roboshop
-curl -s -L -o /tmp/${COMPONENT}.zip ${shipProjRepo}
+curl -s -L -o /tmp/${COMPONENT}.zip ${shipProjRepo} &>> $LOGFILE
 stat $?
 
 echo -n "Extract project"
-unzip -o /tmp/${COMPONENT}.zip
+unzip -o /tmp/${COMPONENT}.zip &>> $LOGFILE
 mv ${COMPONENT}-main ${COMPONENT}
 cd ${COMPONENT}
-mvn clean package 
-mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+mvn clean package  &>> $LOGFILE
+mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar 
 
 echo -n "Update CARTENDPOINT and DBHOST  Endpoint"
-sed -i -e 's/CARTENDPOINT/172.31.6.30/g' /home/$APPUSER/${COMPONENT}/systemd.service  -e 's/DBHOST/172.31.3.237/g' /home/$APPUSER/${COMPONENT}/systemd.service
+sed -i -e 's/CARTENDPOINT/172.31.6.30/g' /home/$APPUSER/${COMPONENT}/systemd.service  -e 's/DBHOST/172.31.3.237/g' /home/$APPUSER/${COMPONENT}/systemd.service &>> $LOGFILE
 stat $?
 
 echo -n "Move shipping files and start"
 mv /home/$APPUSER/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
-systemctl daemon-reload
-systemctl start ${COMPONENT} 
-systemctl enable ${COMPONENT}
-systemctl status ${COMPONENT} -l 
+systemctl daemon-reload &>> $LOGFILE
+systemctl start ${COMPONENT}  &>> $LOGFILE
+systemctl enable ${COMPONENT} &>> $LOGFILE
+systemctl status ${COMPONENT} -l &>> $LOGFILE
 stat $?
