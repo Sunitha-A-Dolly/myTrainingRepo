@@ -21,6 +21,7 @@ stat $?
 
 echo -n "Install software"
 yum install -y mongodb-org 
+systemctl enable ${COMPONENT}
 systemctl start ${COMPONENT}
 stat $?
 
