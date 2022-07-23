@@ -16,3 +16,5 @@ cart :
 	sh components/cart.sh
 ship :
 	sh components/ship.sh
+rabbitMQ :
+	sh components/rabbitMQ.sh
