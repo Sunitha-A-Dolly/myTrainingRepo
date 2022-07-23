@@ -16,11 +16,11 @@ stat $?
 
 echo -n "Install nodejs"
 curl -sL ${nodejsRepo} | bash
-yum install ${nodeJSApplication} -y
+yum install ${nodeJSApplication} -y &>> $LOGFILE
 stat $?
 
 echo -n "Switch to roboshop user"
-id $APPUSER &>> $LOGFILE || useradd $APPUSER
+id $APPUSER &>> $LOGFILE || useradd $APPUSER &>> $LOGFILE
 stat $?
 
 echo -n "Perform cleanup"
@@ -28,18 +28,18 @@ cd /home/$APPUSER/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
 stat $?
 
 echo -n "Download from repo Cart project"
-curl -s -L -o /tmp/cart.zip $cartProjRepo
+curl -s -L -o /tmp/cart.zip $cartProjRepo &>> $LOGFILE
 stat $?
 
 echo -n "Extract Cart Project"
 cd /home/roboshop
-unzip -o /tmp/cart.zip
+unzip -o /tmp/cart.zip &>> $LOGFILE
 stat $?
 
 echo -n "Install npm"
 mv cart-main cart
 cd cart
-npm install
+npm install &>> $LOGFILE
 stat $?
 
 echo -n "Update Redis and Mongodb Endpoint"
