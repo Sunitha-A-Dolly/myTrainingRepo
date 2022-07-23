@@ -4,6 +4,7 @@ COMPONENT=mongod
 LOGFILE="/tmp/$COMPONENT.log"
 MongodRepo="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
 MongodSchemaRepo="https://github.com/stans-robot-project/mongodb/archive/main.zip"
+mongodTempStore="/etc/yum.repos.d/mongodb.repo"
 sw=nginx
 
 set -e
@@ -15,21 +16,21 @@ stat $?
 
 
 echo -n "Extract sw "
-curl -s -o /etc/yum.repos.d/mongodb.repo "$MongodRepo"
+curl -s $mongodTempStore -o $MongodRepo
 stat $?
 
 echo -n "Install software"
-yum install -y mongodb-org &>> $LOGFILE
-systemctl enable mongod &>> $LOGFILE
-systemctl restart mongod &>> $LOGFILE
+yum install -y mongodb-org 
+systemctl enable ${COMPONENT}
+systemctl start ${COMPONENT}
 stat $?
 
 echo -n "Replace ip for Mongodb to be accessible to all"
-sed -i  's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf 
+sed -i  's/127.0.0.1/0.0.0.0/g' /etc/${COMPONENT}.conf 
 stat $?
 
 echo -n "Restart service after config file change"
-systemctl restart mongod &>> $LOGFILE
+systemctl restart ${COMPONENT} &>> $LOGFILE
 stat $?
 
 echo -n "Download the schema and inject it"
