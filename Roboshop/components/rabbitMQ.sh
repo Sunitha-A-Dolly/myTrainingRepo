@@ -12,6 +12,10 @@ echo -n "Check for root user "
 checkUser
 stat $?
 
+echo -n "Perform cleanup"
+cd /home/$APPUSER/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
+stat $?
+
 echo -n "Erlang is a dependency that is needed for ${COMPONENT} "
 yum install $mqDependancyProjRepo -y &>> $LOGFILE
 stat $?
