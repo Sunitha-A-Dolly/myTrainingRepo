@@ -42,8 +42,8 @@ cd cart
 npm install &>> $LOGFILE
 stat $?
 
-echo -n "Update Redis and Mongodb Endpoint"
-sed -i -e 's/REDIS_ENDPOINT/172.31.15.228/g' /home/$APPUSER/${COMPONENT}/systemd.service  -e 's/MONGO_ENDPOINT/172.31.15.221/g' /home/$APPUSER/${COMPONENT}/systemd.service &>> $LOGFILE
+echo -n "Update Redis and Catalogue Endpoint"
+sed -i -e 's/REDIS_ENDPOINT/172.31.15.228/g' /home/$APPUSER/${COMPONENT}/systemd.service -e 's/CATALOGUE_ENDPOINT/172.31.14.231/g' /home/$APPUSER/${COMPONENT}/systemd.service &>> $LOGFILE
 stat $?
 
 echo -n "Enable system service"
