@@ -42,3 +42,15 @@ mv ${COMPONENT}-main ${COMPONENT} && chown -R $APPUSER:$APPUSER ${COMPONENT}
 cd ${COMPONENT}
 npm install &>> $LOGFILE
 stat $?
+
+echo -n "Update Mongodb Endpoint"
+sed -i -e 's/MONGO_DNSNAME/172.31.5.168/g' /home/$APPUSER/${COMPONENT}/systemd.service
+stat $?
+
+echo -n "Update Mongodb Endpoint"
+mv /home/$APPUSER/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+systemctl daemon-reload
+systemctl start ${COMPONENT}
+systemctl enable ${COMPONENT}
+systemctl status ${COMPONENT} -l
+stat $?
