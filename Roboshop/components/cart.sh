@@ -52,3 +52,7 @@ systemctl daemon-reload
 systemctl start ${COMPONENT}
 systemctl enable ${COMPONENT} &>> $LOGFILE
 stat $?
+
+echo -n "Cart status"
+systemctl status cart -l
+stat $?
