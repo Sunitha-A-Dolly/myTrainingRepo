@@ -15,7 +15,7 @@ checkUser
 stat $?
 
 echo -n "Install nodejs"
-curl -sL ${nodejsRepo} | bash
+curl -sL ${nodejsRepo} | bash &>> $LOGFILE
 yum install ${nodeJSApplication} -y &>> $LOGFILE
 stat $?
 
