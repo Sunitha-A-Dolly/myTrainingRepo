@@ -16,7 +16,7 @@ stat $?
 
 
 echo -n "Extract sw "
-curl -s $mongodTempStore -o $MongodRepo
+curl -s ${mongodTempStore} -o ${MongodRepo}
 stat $?
 
 echo -n "Install software"
