@@ -39,7 +39,7 @@ stat $?
 
 echo -n "Extract file to import schema"
 cd /tmp
-unzip mongodb.zip &>> $LOGFILE &>> $LOGFILE
+unzip -o mongodb.zip &>> $LOGFILE &>> $LOGFILE
 stat $?
 
 echo -n "Run the java script to import mysql schema"
