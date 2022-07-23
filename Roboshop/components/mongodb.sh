@@ -23,18 +23,15 @@ echo -n "Install software"
 yum install -y mongodb-org 
 stat $?
 
-echo -n "Enable and restart mongodb"
-systemctl enable ${COMPONENT}
-systemctl start ${COMPONENT}
-stat $?
-
-echo -n "Replace ip for Mongodb to be accessible to all"
+echo -n "Update component listening address"
 sed -i  's/127.0.0.1/0.0.0.0/g' /etc/${COMPONENT}.conf 
 stat $?
 
-echo -n "Restart service after config file change"
-systemctl restart ${COMPONENT} &>> $LOGFILE
+echo -n "Enable and restart mongodb"
+systemctl enable ${COMPONENT}
+systemctl restart ${COMPONENT}
 stat $?
+
 
 echo -n "Download the schema and inject it"
 curl -s -L -o /tmp/mongodb.zip "$MongodSchemaRepo"
