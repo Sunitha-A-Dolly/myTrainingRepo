@@ -18,7 +18,7 @@ stat $?
 
 echo -n "Erlang is a dependency that is needed for ${COMPONENT} "
 yum install $mqDependancyProjRepo -y &>> $LOGFILE
-stat $?
+
 
 echo -n "Download and install ${COMPONENT} "
 curl -s $mqPackage | sudo bash &>> $LOGFILE
