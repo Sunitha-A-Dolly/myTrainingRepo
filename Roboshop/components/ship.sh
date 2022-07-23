@@ -6,7 +6,7 @@ APPUSER="roboshop"
 shipProjRepo="https://github.com/stans-robot-project/shipping/archive/main.zip"
 
 set -e
-echo -e "\e[32m hello I'm Cart \e[0m"
+echo -e "\e[32m hello I'm Ship \e[0m"
 
 echo -n "Check for root user "
 checkUser
@@ -18,6 +18,10 @@ stat $?
 
 echo -n "Switch to roboshop ${COMPONENT} "
 id $APPUSER &>> $LOGFILE || useradd $APPUSER
+stat $?
+
+echo -n "Perform cleanup"
+cd /home/$APPUSER/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
 stat $?
 
 echo -n "Download shipping project"
