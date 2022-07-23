@@ -43,16 +43,16 @@ npm install &>> $LOGFILE
 stat $?
 
 echo -n "Update Redis and Mongodb Endpoint"
-sed -i -e 's/REDIS_ENDPOINT/172.31.15.228/g' /home/$APPUSER/${COMPONENT}/systemd.service  -e 's/MONGO_ENDPOINT/172.31.15.221/g' /home/$APPUSER/${COMPONENT}/systemd.service
+sed -i -e 's/REDIS_ENDPOINT/172.31.15.228/g' /home/$APPUSER/${COMPONENT}/systemd.service  -e 's/MONGO_ENDPOINT/172.31.15.221/g' /home/$APPUSER/${COMPONENT}/systemd.service &>> $LOGFILE
 stat $?
 
 echo -n "Enable system service"
 mv /home/$APPUSER/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>> $LOGFILE
-systemctl daemon-reload
-systemctl start ${COMPONENT}
+systemctl daemon-reload &>> $LOGFILE
+systemctl start ${COMPONENT} &>> $LOGFILE
 systemctl enable ${COMPONENT} &>> $LOGFILE
 stat $?
 
 echo -n "Cart status"
-systemctl status cart -l
+systemctl status cart -l 
 stat $?
