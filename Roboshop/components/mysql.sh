@@ -8,7 +8,7 @@ set -e
 echo -e "\e[32m hello I'm mysql \e[0m"
 
 echo -n "Download sw from repo"
-curl -s -L -o /etc/yum.repos.d/mysql.repo mysqlRepo
+curl -s -L -o /etc/yum.repos.d/mysql.repo $mysqlRepo
 yum install mysql-community-server -y
 stat $?
 
