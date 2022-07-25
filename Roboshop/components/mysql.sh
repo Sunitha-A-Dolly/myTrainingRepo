@@ -18,7 +18,7 @@ systemctl start mysqld
 stat $?
 
 echo "Check if it is first time login and change mysql root password if it is"
-echo "show databases | mysql -uroot -pRoboShop@1"
+echo "show databases" | mysql -uroot -pRoboShop@1
 if [ $1 -ne 0 ]; then
     # Get default password and change password fo mysql
     echo -n "Change expired password"
