@@ -2,13 +2,14 @@
 source components/common.sh
 COMPONENT=mysql
 LOGFILE="/tmp/$COMPONENT.log"
-mysqlRepo="https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo"
+mysqlToolRepo="https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo"
+mysqlProjRepo="https://github.com/stans-robot-project/mysql/archive/main.zip"
 
 set -e
 echo -e "\e[32m hello I'm mysql \e[0m"
 
 echo -n "Download sw from repo"
-curl -s -L -o /etc/yum.repos.d/mysql.repo $mysqlRepo
+curl -s -L -o /etc/yum.repos.d/mysql.repo $mysqlToolRepo
 yum install mysql-community-server -y
 stat $?
 
@@ -38,10 +39,10 @@ if [ $? -eq 0 ]; then
 fi
 
 
-
-
-
-# mysql_secure_installation
-
-#mysql -uroot -pRoboShop@1
-#uninstall plugin validate_password;
+echo -n "Download proj from repo and import schema"
+curl -s -L -o /tmp/mysql.zip $mysqlProjRepo
+cd /tmp
+unzip mysql.zip
+cd mysql-main
+mysql -u root -pRoboShop@1 <shipping.sql
+stat $?
