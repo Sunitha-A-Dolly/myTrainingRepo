@@ -3,15 +3,19 @@ source components/common.sh
 COMPONENT=mysql
 LOGFILE="/tmp/$COMPONENT.log"
 mysqlRepo="https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo"
-sw=nginx
 
 set -e
 echo -e "\e[32m hello I'm mysql \e[0m"
 
+echo -n "Download sw from repo"
 curl -s -L -o /etc/yum.repos.d/mysql.repo mysqlRepo
 yum install mysql-community-server -y
+stat $?
+
+echo -n "Enable mysql service"
 systemctl enable mysqld 
 systemctl start mysqld
+stat $?
 
 # Get default password and change password fo mysql
 echo -n "Change expired password"
