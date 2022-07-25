@@ -5,7 +5,6 @@ LOGFILE="/tmp/$COMPONENT.log"
 mysqlToolRepo="https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo"
 mysqlProjRepo="https://github.com/stans-robot-project/mysql/archive/main.zip"
 
-set -e
 echo -e "\e[32m hello I'm mysql \e[0m"
 
 echo -n "Download sw from repo"
@@ -30,16 +29,13 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Check if it is first time login and change mysql root password if it is"
-echo "show plugins" | mysql -uroot -pRoboShop@1 | grep "validate_password"
+echo "show plugins" | mysql -uroot -pRoboShop@1 | grep "validate_password" 
 if [ $? -eq 0 ]; then
     echo -n "Uninstall plugin and check for mysql connections"
     echo "uninstall plugin validate_password;" > /tmp/uninstallValidatePlugin.sql
     mysql -uroot -pRoboShop@1 < /tmp/uninstallValidatePlugin.sql
     stat $?
-else 
-    exit;
 fi
-
 
 echo -n "Download proj from repo and import schema"
 curl -s -L -o /tmp/mysql.zip $mysqlProjRepo
