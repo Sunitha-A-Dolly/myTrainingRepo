@@ -17,13 +17,18 @@ systemctl enable mysqld
 systemctl start mysqld
 stat $?
 
-# Get default password and change password fo mysql
-echo -n "Change expired password"
-DEFAULT_PASSWORD=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print$NF}')
-echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/changePassword.sql
-mysql --connect-expired-password -uroot -p"$DEFAULT_PASSWORD" < /tmp/changePassword.sql
-echo "mysql -uroot -p${DEFAULT_PASSWORD}"
-stat $?
+echo "Check if it is first time login and change mysql root password if it is"
+echo "show databases | mysql -uroot -pRoboShop@1"
+if [ $1 -ne 0 ]; then
+    # Get default password and change password fo mysql
+    echo -n "Change expired password"
+    DEFAULT_PASSWORD=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print$NF}')
+    echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/changePassword.sql
+    mysql --connect-expired-password -uroot -p"$DEFAULT_PASSWORD" < /tmp/changePassword.sql
+    stat $?
+fi
+
+
 
 
 
