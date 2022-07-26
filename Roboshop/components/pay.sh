@@ -45,7 +45,7 @@ stat $?
 
 
 echo -n "Replace ip"
-sed -i -e 's/CARTHOST/172.31.5.168/g' systemd.service -e 's/USERHOST/172.31.5.168/g' systemd.service -e 's/AMQPHOST/172.31.5.168/g' systemd.service
+sed -i -e 's/CARTHOST/172.31.6.30/g' systemd.service -e 's/USERHOST/172.31.1.91/g' systemd.service -e 's/AMQPHOST/172.31.13.236/g' systemd.service
 stat $?
 
 echo -n "Restart payment service"
