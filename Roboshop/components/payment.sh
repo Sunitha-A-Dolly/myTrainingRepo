@@ -24,6 +24,7 @@ echo -n "Download Repo"
 cd /home/roboshop
 curl -L -s -o /tmp/payment.zip "https://github.com/stans-robot-project/payment/archive/main.zip"
 unzip -o /tmp/payment.zip
+mv payment-main payment
 stat $?
 
 echo -n "Install dependancies"
