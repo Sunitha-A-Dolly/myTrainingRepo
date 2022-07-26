@@ -12,6 +12,14 @@ echo -n "Check for root user "
 checkUser
 stat $?
 
+echo -n "Install python"
+yum install python36 gcc python3-devel -y
+stat $?
+
+echo -n "Switch to roboshop ${COMPONENT} and run "
+id $APPUSER &>> $LOGFILE || useradd $APPUSER
+stat $? 
+
 echo -n "Download Repo"
 cd /home/roboshop
 curl -L -s -o /tmp/payment.zip "https://github.com/stans-robot-project/payment/archive/main.zip"
