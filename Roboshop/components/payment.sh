@@ -13,23 +13,23 @@ checkUser &>> $LOGFILE
 stat $?
 
 echo -n "Install python"
-yum install python36 gcc python3-devel -y &>> $LOGFILE
+yum install python36 gcc python3-devel -y 
 stat $?
 
 echo -n "Switch to roboshop ${COMPONENT} and run "
-id $APPUSER &>> $LOGFILE || useradd $APPUSER &>> $LOGFILE
+id $APPUSER &>> $LOGFILE || useradd $APPUSER 
 stat $? 
 
 echo -n "Download Repo"
 cd /home/roboshop
-curl -L -s -o /tmp/payment.zip "https://github.com/stans-robot-project/payment/archive/main.zip" &>> $LOGFILE
+curl -L -s -o /tmp/payment.zip "https://github.com/stans-robot-project/payment/archive/main.zip" 
 unzip -o /tmp/payment.zip &>> $LOGFILE
 mv payment-main payment &>> $LOGFILE
 stat $?
 
 echo -n "Install dependancies"
 cd /home/roboshop/payment 
-pip3 install -r requirements.txt &>> $LOGFILE
+pip3 install -r requirements.txt 
 stat $?
 
 echo -n "Update payment.ini file"
