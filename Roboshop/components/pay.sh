@@ -26,19 +26,19 @@ stat $?
 
 echo -n "Download Repo"
 cd /home/roboshop
-curl -L -s -o /tmp/payment.zip "https://github.com/stans-robot-project/payment/archive/main.zip" 
+curl -L -s -o /tmp/payment.zip "https://github.com/stans-robot-project/payment/archive/main.zip"  &>> $LOGFILE
 unzip -o /tmp/payment.zip &>> $LOGFILE
 mv payment-main payment &>> $LOGFILE
 stat $?
 
 echo -n "Install dependancies"
 cd /home/roboshop/payment 
-pip3 install -r requirements.txt 
+pip3 install -r requirements.txt  &>> $LOGFILE
 stat $?
 
 echo -n "Update payment.ini file"
-uidValue = ${id -u}
-gidValue = ${id -g}
+uidValue = id -u
+gidValue = id -g
 echo $uidValue $gidValue
 sed -i -e 's/uid = 1/$uidValue/g' /home/$APPUSER/${COMPONENT}/payment.ini  -e 's/gid = 1/$gidValue/g' /home/$APPUSER/${COMPONENT}/payment.ini
 stat $?
