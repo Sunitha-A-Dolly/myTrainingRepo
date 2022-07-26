@@ -1,6 +1,6 @@
 #!/bin/bash
 source components/common.sh
-COMPONENT=catalogue
+COMPONENT=payment
 LOGFILE="/tmp/$COMPONENT.log"
 CatalogueRepo="https://github.com/stans-robot-project/catalogue/archive/main.zip"
 APPUSER="roboshop"
@@ -36,4 +36,9 @@ cd /home/roboshop/payment
 pip3 install -r requirements.txt 
 stat $?
 
-
+echo -n "Update payment.ini file"
+uidValue = ${id -u}
+gidValue = ${id -g}
+echo $uidValue $gidValue
+sed -i -e 's/uid = 1/$uidValue/g' /home/$APPUSER/${COMPONENT}/payment.ini  -e 's/gid = 1/$gidValue/g' /home/$APPUSER/${COMPONENT}/payment.ini
+stat $?
