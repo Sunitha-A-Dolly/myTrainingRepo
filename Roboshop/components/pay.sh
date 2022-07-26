@@ -42,3 +42,16 @@ gidValue=$(id -g $APPUSER)
 echo $uidValue $gidValue
 sed -i -e "/uid/ c uid = $uidValue" -e "/gid/ c gid = $gidValue" payment.ini
 stat $?
+
+
+echo -n "Replace ip"
+sed -i -e 's/CARTHOST/172.31.5.168/g' systemd.service -e 's/USERHOST/172.31.5.168/g' systemd.service -e 's/AMQPHOST/172.31.5.168/g' systemd.service
+stat $?
+
+echo -n "Restart payment service"
+mv /home/roboshop/payment/systemd.service /etc/systemd/system/payment.service
+systemctl daemon-reload
+systemctl enable payment 
+systemctl start payment
+systemctl status payment -l
+stat $?
