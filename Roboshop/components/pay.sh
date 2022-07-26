@@ -13,11 +13,11 @@ checkUser &>> $LOGFILE
 stat $?
 
 echo -n "Install python"
-yum install python36 gcc python3-devel -y 
+yum install python36 gcc python3-devel -y &>> $LOGFILE
 stat $?
 
 echo -n "Switch to roboshop ${COMPONENT} and run "
-id $APPUSER &>> $LOGFILE || useradd $APPUSER 
+id $APPUSER &>> $LOGFILE || useradd $APPUSER &>> $LOGFILE
 stat $? 
 
 echo -n "Perform cleanup"
