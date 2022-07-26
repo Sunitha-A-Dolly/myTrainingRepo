@@ -36,9 +36,9 @@ cd /home/roboshop/payment
 pip3 install -r requirements.txt  &>> $LOGFILE
 stat $?
 
-echo -n "Update payment.ini file"
-uidValue=$(id -u)
-gidValue=$(id -g)
+echo -n "Update payment.ini file "
+uidValue=$(id -u $APPUSER )
+gidValue=$(id -g $APPUSER)
 echo $uidValue $gidValue
-sed -i -e 's/uid = 1/uid = "$uidValue"/g' /home/$APPUSER/${COMPONENT}/payment.ini  -e 's/gid = 1/gid = "$gidValue"/g' /home/$APPUSER/${COMPONENT}/payment.ini
+sed -i -e "/uid/ c uid = $uidValue" -e "/gid/ c gid = $gidValue" payment.ini
 stat $?
