@@ -18,3 +18,5 @@ ship :
 	sh components/ship.sh
 rabbitMQ :
 	sh components/rabbitMQ.sh
+payment :
+	sh components/payment.sh

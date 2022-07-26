@@ -28,7 +28,7 @@ if [ $? -ne 0 ]; then
     stat $?
 fi
 
-echo "Check if it is first time login and change mysql root password if it is"
+echo "Check if validate password plugin exist and uninstall it"
 echo "show plugins" | mysql -uroot -pRoboShop@1 | grep "validate_password" 
 if [ $? -eq 0 ]; then
     echo -n "Uninstall plugin and check for mysql connections"
