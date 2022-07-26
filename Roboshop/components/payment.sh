@@ -20,6 +20,10 @@ echo -n "Switch to roboshop ${COMPONENT} and run "
 id $APPUSER &>> $LOGFILE || useradd $APPUSER 
 stat $? 
 
+echo -n "Perform cleanup"
+cd /home/$APPUSER/ && sudo rm -rf ${COMPONENT} &>> $LOGFILE
+stat $?
+
 echo -n "Download Repo"
 cd /home/roboshop
 curl -L -s -o /tmp/payment.zip "https://github.com/stans-robot-project/payment/archive/main.zip" 
