@@ -19,4 +19,3 @@ sed -e "s/IPADDRESS/$PRIVATE_IP/" -e "s/COMPONENT/$Component/" route53.json > /t
 # Create route53 record
 aws route53 change-resource-record-sets --hosted-zone-id Z03158041QD430SCB65LE --change-batch file:///tmp/record.json | jq
 
-sed -e "/s/IPADDRESS/$/" -e "/s/COMPONENT/$Component/" route53.json > /tmp/record.json
