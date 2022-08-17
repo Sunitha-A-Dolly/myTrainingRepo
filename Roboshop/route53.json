@@ -3,7 +3,7 @@
             "Changes": [{
             "Action": "CREATE",
                         "ResourceRecordSet": {
-                                    "Name": "COMPONENT.internal.com",
+                                    "Name": "COMPONENT.roboshop.internal",
                                     "Type": "A",
                                     "TTL": 300,
                                  "ResourceRecords": [{ "Value": "IPADDRESS"}]
