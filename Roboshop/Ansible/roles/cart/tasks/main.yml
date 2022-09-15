@@ -4,14 +4,36 @@
     state: present
     # installing Nginx
 
-
 - name: Unarchive a file that needs to be downloaded (added in 2.0)
   ansible.builtin.unarchive:
     src: https://github.com/stans-robot-project/frontend/archive/main.zip
     dest: /tmp
     remote_src: yes
+    # Download from repo and unarchive file
   
-- name: Recursively remove directory
+- name: Cleanup old HTML document
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent
+    # clean up the existing html index page 
+
+- name: Copy file 
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html
+    remote_src: yes
+
+- name: Copy file 
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+    remote_src: yes
+
+
+- name: Restart service httpd, in all cases
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+    enabled: yes
+
+
