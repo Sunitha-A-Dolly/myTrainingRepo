@@ -5,5 +5,7 @@
       
   tasks:
     - name: Hellow to all from play1
+      shell: uptime
+      register: OUT
       ansible.builtin.debug:
-       msg: Hellow to all from play1 task1 {{URL}}
+       msg: Hellow to all from play1 task1 {{URL}} {{OUT}}
