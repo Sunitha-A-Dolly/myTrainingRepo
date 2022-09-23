@@ -4,8 +4,10 @@
     - URL: websitenew
       
   tasks:
-    - name: Hellow to all from play1
+    - name: Run shell command
       shell: uptime
       register: OUT
+
+    - name: Print Message
       ansible.builtin.debug:
        msg: Hellow to all from play1 task1 {{URL}} {{OUT}}
