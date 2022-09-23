@@ -10,4 +10,4 @@
 
     - name: Print Message
       ansible.builtin.debug:
-       msg: Hellow to all from play1 task1 {{URL}} {{OUT}}
+       msg: Hellow to all from play1 task1 {{URL}} {{ OUT.stdout }}
