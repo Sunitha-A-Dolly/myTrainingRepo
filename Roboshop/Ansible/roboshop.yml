@@ -1,4 +1,4 @@
-- name: Playbook to run frontend
+- name: Playbook to run all component
   hosts: frontend
   become: yes
   roles:
