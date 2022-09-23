@@ -1,6 +1,9 @@
 - name: Play 1
   hosts: all
+  vars:
+    - URL: websitenew
+      
   tasks:
     - name: Hellow to all from play1
       ansible.builtin.debug:
-       msg: Hellow to all from play1 task1
+       msg: Hellow to all from play1 task1 {{URL}}
