@@ -1,0 +1,23 @@
+- name: Unarchive a file that needs to be downloaded (added in 2.0)
+  ansible.builtin.unarchive:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+    remote_src: yes
+
+- name: Install mongodb-org
+  ansible.builtin.package:
+    name: mongodb-org
+    state: present
+    # installing mongodb-org
+
+- name: Replace old hostname with new hostname (requires Ansible >= 2.4)
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Restart service mongod, in all cases
+  ansible.builtin.service:
+    name: mongod
+    state: started
+    enabled: yes

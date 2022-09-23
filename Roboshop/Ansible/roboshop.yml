@@ -1,5 +1,5 @@
 - name: Playbook to run all component
-  hosts: frontend
+  hosts: {{ "Component" }}
   become: yes
   roles:
-    - frontend
+    - {{ "Component" }}

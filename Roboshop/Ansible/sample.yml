@@ -6,7 +6,7 @@
   tasks:
     - name: Copy a "sudoers" file on the remote machine for editing
       ansible.builtin.copy:
-        src: ./sample.xml
+        src:  temp.xml
         dest: /home/centos
 
     - name: Run shell command
