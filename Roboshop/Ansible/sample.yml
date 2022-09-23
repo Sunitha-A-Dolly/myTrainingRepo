@@ -4,6 +4,12 @@
     - URL: websitenew
       
   tasks:
+    - name: Copy a "sudoers" file on the remote machine for editing
+      ansible.builtin.copy:
+        src: sample.xml
+        dest: /home/centos
+        remote_src: yes
+        
     - name: Run shell command
       shell: uptime
       register: OUT
