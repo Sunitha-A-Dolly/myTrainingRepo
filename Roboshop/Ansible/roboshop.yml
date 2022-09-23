@@ -1,0 +1,5 @@
+- name: Playbook to run frontend
+  hosts: frontend
+  become: yes
+  roles:
+    - frontend
