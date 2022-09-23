@@ -1,5 +1,5 @@
 - name: Unarchive a file that needs to be downloaded (added in 2.0)
-  ansible.builtin.unarchive:
+  ansible.builtin.copy:
     src: mongodb.repo
     dest: /etc/yum.repos.d/mongodb.repo
     remote_src: yes
